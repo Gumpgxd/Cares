@@ -1,0 +1,32 @@
+<view class="detail-box">
+  <view class="head">
+    <view class="head-title">{{ data_list.tittle}}</view>
+    <view class="head-time">
+    {{ data_list.created_at}}
+    </view>
+  </view>
+<view class="info-box">
+  <view class="info">
+  {{ data_list.content}}
+  </view>
+  <view class="info-img">
+    <image class="img" src="{{ data_list.image_url}}" mode="aspectFill"></image>
+  </view>
+</view>
+
+<view class="share-box f-a">
+<view class="share-left f-j" bindtap="goBack">
+  <van-icon name="revoke"  size="25px"
+   />
+    <view class="f-a btn-text">返回</view>
+</view>
+<view class="share-right">
+<button class="share-btn f-j"  open-type="share" >
+    <van-icon 
+    size="25px"
+    name="wechat"  color="#fff"/>
+    <view class="f-a btn-text">分享</view>
+</button>
+</view>
+</view>
+</view>

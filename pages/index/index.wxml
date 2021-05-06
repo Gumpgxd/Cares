@@ -1,0 +1,122 @@
+<view class="index-bg">
+  <view class="index-box">
+    <!-- 位置 s -->
+    <view class="search">
+      <van-search 
+      disabled
+      bind:tap="goSearch"
+      value="{{ value }}" shape="round" background="transparent" placeholder="搜索关键词"/>
+    </view>
+   <!-- 位置 e -->
+  </view>
+
+<!-- 图标 -->
+<view class="choose-box">
+  <view class="f-j-s box-bottom">
+  <block wx:for="{{choose_list}}" wx:key="index">
+    <navigator class="nav" url="{{item.url}}">
+      <view class="choose-item ">
+      <image class="choose-img" src="{{item.src}}"></image>
+      <view class="choose-text">
+        {{item.name}}
+      </view>
+    </view>
+    </navigator>
+  </block>
+  </view>
+
+  <view class="f-j-s">
+  <block wx:for="{{choose_list2}}" wx:key="index">
+    <navigator class="nav" url="{{item.url}}">
+    <view class="choose-item ">
+    <image 
+    class="choose-img"
+    src="{{item.src}}"></image>
+    <view class="choose-text">
+      {{item.name}}
+    </view>
+  </view>
+</navigator>
+  </block>
+  </view>
+ </view>
+ 
+
+  <!-- 轮播图 s -->
+  <view class="swiper-box">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:150px;width:95%;margin:0 auto;border-radius: 15rpx;box-shadow: 0px 0px 8px #727373;overflow: hidden;">
+    <block wx:for="{{swiper_list}}" wx:key="index">
+      <swiper-item>
+        <image
+        data-id="{{item.article_id}}"
+        mode="aspectFill"
+        class="swiper-img"
+        src="{{item.image_url}}" bind:tap="goAriticelDetail"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+  <!-- 轮播图 e -->
+
+  <!-- 热点资讯 -->
+  <view class="hot-spot">
+    <view class="hot-head">
+      <van-icon name="fire" color="#FF6347" class="fireIcon"/>
+      <view class="hot-titles">热点资讯</view>
+    </view>
+    <view class="hot-bottom" wx:for="{{hot}}" wx:key="index">
+      <!-- 第一层 -->
+      <view class="hot-key">
+        <view class="hot-color-first">{{index+1}}</view>
+        <view class="hot-title" bindtap="goAriticelDetail"
+        data-id="{{item.article_id}}"
+        >{{item.tittle}}</view>
+        <image src="../../utils/img/tabBarImg/new.png" class="hot-icon"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 热点资讯 -->
+
+  <!-- 导航栏 s -->
+  <van-sticky>
+  <view class="nav-box">
+    <van-tabs swipeable color="#96E8BA" title-active-color="#96E8BA" bind:change="onChange" active="{{active}}">
+    <block wx:for="{{tab_list}}" wx:key="index">
+      <van-tab title="{{item.title}}" ></van-tab>
+    </block>
+    </van-tabs>
+  </view>
+</van-sticky>
+  <!-- 导航栏 e -->
+  <!-- 分类消息 s -->
+  
+    <swiper current="{{active}}" bindchange="changeSwiper" style="height:{{swiper_height+'px'}}">
+      <block wx:for="{{tab_list}}" wx:key="index" wx:for-item="itemTab">
+        <swiper-item>
+          <scroll-view scroll-y="true"
+          style="height:{{swiper_height+'px'}}"
+           >
+        <block wx:for="{{tabData_list}}" wx:key ="index">
+          <view class="cell-box">
+            <van-cell center border  bind:click="goAriticelDetail"
+            data-id="{{item.article_id}}"
+             >
+              <view slot="title">
+                <view class="van-cell-text">
+                {{item.tittle}}</view>
+                <van-tag type="primary" class="litte-text" size="medium" >{{itemTab.title}}</van-tag>
+              </view>
+              <view slot="icon">
+              <image
+              class="left"
+               src="{{item.image_url}}"></image>
+              </view>
+            </van-cell>
+          </view>
+        </block>
+        </scroll-view>
+        </swiper-item>
+      </block>
+    </swiper>
+  <!-- 分类消息 e -->
+</view>

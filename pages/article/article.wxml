@@ -1,0 +1,42 @@
+<!--pages/article/article.wxml-->
+<view class="index">
+  <!-- 搜索 -->
+  <view class="search">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="onSearch"/>
+  </view>
+  <!-- 文章 -->
+  <view class="noneActicle" wx:if="{{MyArticle == null}}">
+    <text>
+      你还没有分享过文章哦
+    </text>
+  </view>
+
+
+
+  <view wx:if="{{MyArticle != null}}" wx:for="{{MyArticle}}" wx:key="article_id">
+    <view class="MyActicle">
+    <view class="acticle">
+      <!-- 图片 -->
+      <view class="left" bindtap="removes" data-id="{{item.article_id}}">
+        <image src="{{item.image_url}}"></image>
+      </view>
+      <!-- 标题内容 -->
+      <view class="middle" bindtap="removes" data-id="{{item.article_id}}">
+        <view class="MyTitle">{{item.tittle}}</view>
+        <text class="MyActicles">{{item.content}}</text>
+      </view>
+      <!-- 时间按钮 -->
+      <view class="right">
+        <text class="MyTime">{{item.created_at}}</text>
+        <van-button type="primary" size="small" color="#43C5FF" class="remove" direction="horizontal" bind:click="remove" data-id="{{item.article_id}}">删除</van-button>
+      </view>
+    </view>
+    <!-- 进度条 -->
+    <view class="progress">
+      <text class="status">审批状态</text>
+      <van-steps wx:if="{{item.pass !== 3}}" direction="horizontal" active-color="#43C5FF" active="{{item.pass}}" steps="{{steps}}"></van-steps>
+      <van-steps wx:if="{{item.pass === 3}}" direction="horizontal" active-color="red" active="{{item.pass}}" steps="{{step}}"></van-steps>
+    </view>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+<view class="index">
+  <!-- 图片 -->
+  <view class="imageUrl">
+    <image src="https://gd-pub.jinshujufiles.com/hi/20200521140940_7d55f4" mode="aspectFill"></image>
+  </view>
+  <view class="tips">
+    <text>以下信息已通过审核，情况属实。帮助别人是一种高尚的美，而一个大集体就是用这种美构成的。一个集体如果拥有这样的美，那它一定是一个强大的集体。</text>
+  </view>
+
+  <view class="HelpText">
+  <!-- 标题正文 -->
+  <view class="helpTitle">
+    <view class="head">
+    <view class="title">
+    请大家帮忙寻找,多多转发！！！
+    </view>
+  </view>
+    <!-- 求助信息 -->
+    <!-- <block wx:for="{{detail_list}}" wx:key = "index"> -->
+    
+    <view class="userMessage">
+      <text>姓名:{{detail_list.name}}, </text>
+      <text>性别:{{detail_list.sex}}，</text>
+      <text>身高:{{detail_list.height}}，</text>
+      <text>地址:{{detail_list.address}}，</text>
+      <text>年龄:{{detail_list.age}}，</text>
+      <text>联系电话:{{detail_list.tele}} </text>
+      <text>日期:{{detail_list.date}}, </text>
+      <text>特点:{{detail_list.feature}}, </text>
+    </view>
+
+    <view class="line"></view>
+    <!-- 求助描述 -->
+    <view class="userDe">
+
+      <view class="title">失散过程</view>
+      <view class="userMessage">
+        <text>{{detail_list.postscript}}</text>
+      </view>
+      <view class="title">家属附言</view>
+      <view class="userMessage">
+        <text>{{detail_list.postscript}}</text>
+      </view>
+      <view class="Img">
+        <image src="{{detail_list.image_url}}" mode="widthFix"></image>
+      </view>
+      <view class="time">{{detail_list.created_at}}</view>
+    </view>
+  <!-- </block> -->
+  </view>
+  </view>
+
+  <!-- 点击 -->
+  <view class="bottomBtn">
+    <van-button 
+    data-phone = "{{detail_list.tele}}"
+    bind:click="makePhone"
+    color="#43C5FF" 
+    block>联系他</van-button>
+  </view>
+</view>

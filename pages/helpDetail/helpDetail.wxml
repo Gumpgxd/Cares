@@ -1,0 +1,41 @@
+<view class="index">
+  <!-- 图片 -->
+  <view class="imageUrl">
+    <image src="https://gd-pub.jinshujufiles.com/hi/20200521140940_7d55f4" mode="aspectFill"></image>
+  </view>
+  <view class="tips">
+    <text>以下信息已通过审核，情况属实。帮助别人是一种高尚的美，而一个大集体就是用这种美构成的。一个集体如果拥有这样的美，那它一定是一个强大的集体。</text>
+  </view>
+
+  <view class="HelpText">
+  <!-- 标题正文 -->
+  <view class="helpTitle">
+    <view class="title">{{HelpMessage.tittle}}</view>
+    <!-- 求助信息 -->
+    <view class="userMessage">
+      <text>{{HelpMessage.name}}，</text>
+      <text>{{HelpMessage.sex}}，</text>
+      <text>{{HelpMessage.nation}}，</text>
+      <text>{{HelpMessage.address}}人，</text>
+      <text>身份证号：{{HelpMessage.identity}}，</text>
+      <text>联系电话：{{HelpMessage.number}}</text>
+    </view>
+    <view class="line"></view>
+    <!-- 求助描述 -->
+    <view class="userDe">
+      <view class="title">详细情况</view>
+      <view class="userMessage">
+        <text>{{HelpMessage.explain}}</text>
+      </view>
+      <view class="Img">
+        <image src="{{HelpMessage.image_url}}" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+  </view>
+
+  <!-- 点击 -->
+  <view class="bottomBtn">
+    <van-button color="#43C5FF" block>联系他</van-button>
+  </view>
+</view>
